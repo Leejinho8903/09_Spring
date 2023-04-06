@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<!-- 
+					key : 예외 클래스명 작성 (풀 클래스명을 작성해도 되고 클래스명만 작성해도 된다.)
+				    value : 경로 작성 (view resolver가 해석 시 InternalResourceViewResolver를 이용하기 때문에
+				    prefix/suffix 고려해서 경로를 작성한다.) 
+				  -->
+				<prop key="java.lang.NullPointerException">error/nullPointer</prop>
+				<prop key="MemberRegistException">error/memberRegist</prop>
+			</props>
+		</property>
+		<!-- 등록 되지 않은 에러에 대한 기본 페이지 설정 -->
+		<property name="defaultErrorView" value="error/default"/>
+	</bean>
+		
+</beans>
+
+
+
+
+
+
+
